@@ -1,0 +1,7 @@
+<% @one_match.posts.each do |p| %>
+    <% if p.user == current_user %>
+        <p>나 : <%= p.content %></p>
+    <% else %>
+        <p>놈 : <%= p.content %></p>
+    <% end %>
+<% end %>

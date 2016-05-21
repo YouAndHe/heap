@@ -1,0 +1,82 @@
+<div class="container">
+  <div style="background: url('/assets/background.jpg');;height:200px;">
+    <div class="row">
+      <div class="col-xs-2 col-md-1"></div>
+      <div class="col-xs-8 col-md-10" style="margin-top:30px;">
+      <!--메뉴-->
+      <div class="ui secondary  menu">
+        <a class="active item">
+          Home
+        </a>
+        <a class="item">
+          Messages
+        </a>
+        <div class="right menu">
+          <div class="item">
+            <div class="ui icon input">
+              <input type="text" placeholder="Search...">
+              <i class="search link icon"></i>
+            </div>
+          </div>
+          <a class="ui item" href="/users/sign_in">
+            Login
+          </a>
+        </div>
+      </div>
+      <!--메뉴-->
+      </div>
+      <div class="col-xs-2 col-md-1"></div>
+    </div>
+  </div>
+  
+  <!--그리드 레이아웃-->
+  <div class="row" style="margin-top:30px;">
+    <div class="col-xs-1 col-md-2"></div>
+    <div class="col-xs-10 col-md-8">
+          <!--글 쓰러가기-->
+          <div>
+            <div class="ui card" style="width:100%; margin-top:30px;">
+                <div class="content" >
+                    지금 당장 욕설하세요.
+                </div>
+            </div>
+            <a href = "/home/writepage"><button class="ui green button">욕하러 가기</button></a>
+          </div>
+          <!--글 쓰러가기 끝-->
+        
+        <!-- 카드 -->
+        <% @posts.each do |p| %>
+        <div class="ui card" style="width:100%; margin-top:30px;">
+          <div class="content" >
+            <a><i class="ellipsis vertical icon" style="float:right;font-size:20px;color:#999999;"></i></a>
+            <div class="">#<%= p.id %>번째 욕설</div>
+            <div class="meta">2 days ago</div>
+            <div class="description">
+            
+            <!--유저정보-->
+            <div class="ui list" style="margin-top:30px;">
+              <div class="item">
+                <i class="users icon"></i>
+                <div class="content">
+                  나이 - 27
+                </div>
+              </div>
+              <div class="item">
+                <i class="marker icon"></i>
+                <div class="content">
+                  사는 곳 - <a class="ui green label">서울</a><a class="ui green label">광진구</a>
+                </div>
+              </div>
+            </div>
+            <!--유저정보끝-->
+              <p style="margin-top:40px;"><%= p.post_content %></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+        <!-- 카드 -->  
+  </div>
+  <div class="col-xs-1 col-md-2"></div>
+  <!--그리드 레이아웃-->
+    
+</div>

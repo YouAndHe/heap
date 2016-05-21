@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  shared: false
+  sent: false
+  match_key: MyString
+
+two:
+  content: MyText
+  shared: false
+  sent: false
+  match_key: MyString
