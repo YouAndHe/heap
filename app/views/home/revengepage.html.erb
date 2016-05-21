@@ -14,13 +14,13 @@
         <div><p style="font-size:200%;text-align:center;">복수하기</p></div>
     </div>
     <div class="row">
-        <form action = "/home/revenge" method="POST"> 
+        <form  method="POST"> 
             <div class="ui form">
                 <div class="field">
                     <label>욕을 써주세요</label>
                 <textarea name="content"></textarea>
                 </div>
-                <input type="hidden" value="matchkey" name="matchkey">
+                <input type="hidden" value="<%= @mat %>" name="matchkey">
 
                     
                 <div class = "ui segment">

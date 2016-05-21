@@ -17,7 +17,7 @@ class HomeController < ApplicationController
         matchid = Match.find_by starter: current_user.email,receiver: "receiver"
         if matchid == nil
             o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
-            uid  =  Time.new.asctime + (0...50).map{ o[rand(o.length)]  }.join
+            uid  =  Time.new.to_f.to_s + (0...50).map{ o[rand(o.length)]  }.join
             
             match = Match.new
             match.key = uid; 
@@ -36,10 +36,13 @@ class HomeController < ApplicationController
         "개자식",
         "돌아이",
         "개놈",
+        "뀩",
+        "뿌우우웅",
         "히히",
         "멍청이",
         "말미잘",
         "싸이코",
+        "뽀큐",
         "바보",]
         
         arrayzim = post.content.split(' ')
@@ -74,7 +77,7 @@ class HomeController < ApplicationController
                   from: 'insultinstead123@gmail.com',
                   to: match.receiver,
                   subject:'*주의* 누군가가 당신을 욕했습니다!!!!!' ,
-                  text: post.content + "\n 복수하러가기  : http://heap-insult-unamed12.c9users.io/home/revengepage/" + match.id.to_s
+                  text: post.content + "\n 복수하러가기  : http://heap-insult-unamed12.c9users.io/home/revengepage/" + match.key.to_s
         }
     
         result = mg_client.send_message('sandboxd5c47e25bd5b46ca920848d4c202601f.mailgun.org', message_params).to_h!
@@ -147,7 +150,7 @@ class HomeController < ApplicationController
                   from: 'insultinstead123@gmail.com',
                   to: receiver,
                   subject:'*주의* 누군가가 당신을 욕했습니다!!!!!' ,
-                  text: words + "\n 복수하러가기  : http://heap-insult-unamed12.c9users.io/home/revengepage/" + match.id.to_s
+                  text: words + "\n 복수하러가기  : http://heap-insult-unamed12.c9users.io/home/revengepage/" + match.key.to_s
         }
     
         result = mg_client.send_message('sandboxd5c47e25bd5b46ca920848d4c202601f.mailgun.org', message_params).to_h!
@@ -163,6 +166,7 @@ class HomeController < ApplicationController
     end 
     
     def revengepage
+        @mat = params[:matchkey]
     end
     
     
@@ -170,7 +174,7 @@ class HomeController < ApplicationController
         unless user_signed_in?
             redirect_to "/users/sign_in"
         end
-        @matchkey=params[:matchkey]
+       
     end
     
     def vslist
