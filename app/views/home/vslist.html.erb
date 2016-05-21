@@ -4,13 +4,13 @@
         <div class="col-md-6">
             시비 건 list
             <% @matchstart.each do | m | %>
-                <li><a href="/home/vsstart/<%=m.id %>">matchid:<%=m.id %> 시비털기</a></li>
+                <li><a href="/home/vsstart/<%=m.id %>">matchid:<%=m.id %> 시비턴 내용</a></li>
             <% end %>
         </div>
         <div class="col-md-6">
             시비 온 list
             <% @matchreceiver.each do | m | %>
-                <li><a href="/home/vsstart/<%=m.id %>">matchid:<%=m.id %> 시비받기</a></li>
+                <li><a href="/home/vsstart/<%=m.id %>">matchid:<%=m.id %> 시비받은 내용</a></li>
             <% end %>
         </div>
     </div>

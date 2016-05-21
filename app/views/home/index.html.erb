@@ -15,13 +15,16 @@
               <i class="search link icon"></i>
             </div>
           </div>
-            <a class="ui item" href="/users/sign_in" style="color:white">
-              Login
-            </a>
+          <% if user_signed_in? %>
+            <div class="ui item" style="color:white"><%= current_user.email %>님 ㅗㅗ</div>
             <a class="ui item" href="/users/sign_out" style="color:white">
               Logout
             </a>
-            <%= link_to "Users",    '#' %>
+          <%else %>
+            <a class="ui item" href="/users/sign_in" style="color:white">
+              Login
+            </a>
+          <%end %>
         </div>
       </div>
       <!--메뉴-->

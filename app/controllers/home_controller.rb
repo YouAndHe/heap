@@ -1,5 +1,5 @@
 require 'devise'
-#require 'mailgun'
+require 'mailgun'
 
 class HomeController < ApplicationController
     
@@ -30,27 +30,56 @@ class HomeController < ApplicationController
         post.shared = params[:shared]
         post.sent = params[:sent]
         
-        match.save
+        # 욕설 알고리즘 시작
+        yok = ["띠붕",
+        "개자식",
+        "돌아이",
+        "개놈",
+        "히히",
+        "멍청이",
+        "말미잘",
+        "싸이코",
+        "바보",]
+        
+        arrayzim = post.content.split(' ')
+        arraynumber = arrayzim.length
+        
+        if arraynumber == 0 
+        
+        end
+        randomindex = (1..arraynumber).select(&:odd?).sample(arraynumber-2).sort  
+        
+        for i in 0..randomindex.length-1
+          arrayzim.insert(randomindex.sample, yok.sample)
+        end
+      
+        words = String.new
+        
+        arrayzim.each do |word|
+          words += (word+ " ")
+        end
+        post.content = words
+        # 욕설 알고리즘 끝
+        
         
         post.user_id = current_user.id
         post.match_id = match.id 
         
         post.save
-        
             
-    #mg_client = Mailgun::Client.new("key-b748cb86971bfc3e46ff02fe897bbd26")
-
-    # message_params =  {
-    #           from: 'insultinstead123@gmail.com',
-    #           to: params[:receiver] ,
-    #           subject:'*주의* 누군가가 당신을 욕했습니다!!!!!' ,
-    #           text: params[:content]}
-
-    # result = mg_client.send_message('sandboxd5c47e25bd5b46ca920848d4c202601f.mailgun.org', message_params).to_h!
-
-    #   message_id = result['id']
-    #   message = result['message']
+        mg_client = Mailgun::Client.new("key-b748cb86971bfc3e46ff02fe897bbd26")
     
+        message_params =  {
+                  from: 'insultinstead123@gmail.com',
+                  to: match.receiver,
+                  subject:'*주의* 누군가가 당신을 욕했습니다!!!!!' ,
+                  text: Post.content + "\n 복수하러가기  : http://heap-insult-unamed12.c9users.io/home/revengepage/" + match.id
+        }
+    
+        result = mg_client.send_message('sandboxd5c47e25bd5b46ca920848d4c202601f.mailgun.org', message_params).to_h!
+    
+          message_id = result['id']
+          message = result['message']
             
         redirect_to "/"
     end 
@@ -93,9 +122,5 @@ class HomeController < ApplicationController
         # mt.receiver = "test@gmail.com"
         # mt.save
     end
-    
-    def logged_in?
-    !current_user.nil?
-    end
-    
+
 end

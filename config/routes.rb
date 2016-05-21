@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get 'home/writepage'
   get 'home/revengepage'
   
-  
   post 'home/write'
   post 'home/revenge'
   
