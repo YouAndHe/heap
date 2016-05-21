@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'home/index'
   root 'home#index'
   get 'home/writepage'
-  get 'home/revengepage'
+  get 'home/revengepage/:matchkey' => 'home#revengepage'
   
   post 'home/write'
   post 'home/revenge'

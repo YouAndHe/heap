@@ -54,7 +54,8 @@
           <div class="content" >
             <a><i class="ellipsis vertical icon" style="float:right;font-size:20px;color:#999999;"></i></a>
             <div class="">#<%= p.id %>번째 욕설</div>
-            <div class="meta">2 days ago</div>
+            <div class="meta"><%= time_ago_in_words(p.created_at) %>
+</div>
             <div class="description">
             
             <!--유저정보-->
@@ -73,7 +74,7 @@
               </div>
             </div>
             <!--유저정보끝-->
-              <p style="margin-totp:40px;"><%= p.content %></p>
+              <span  style="margin-totp:40px;font-size: 1.5em;"><%= p.content %></span>
             </div>
           </div>
         </div>
