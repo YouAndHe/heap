@@ -5,11 +5,8 @@
       <div class="col-xs-8 col-md-10" style="margin-top:30px;">
       <!--메뉴-->
       <div class="ui secondary  menu">
-        <a class="active item">
+        <a class="active item" style="color:white">
           Home
-        </a>
-        <a class="item">
-          Messages
         </a>
         <div class="right menu">
           <div class="item">
@@ -18,9 +15,13 @@
               <i class="search link icon"></i>
             </div>
           </div>
-          <a class="ui item" href="/users/sign_in">
-            Login
-          </a>
+            <a class="ui item" href="/users/sign_in" style="color:white">
+              Login
+            </a>
+            <a class="ui item" href="/users/sign_out" style="color:white">
+              Logout
+            </a>
+            <%= link_to "Users",    '#' %>
         </div>
       </div>
       <!--메뉴-->
@@ -69,7 +70,7 @@
               </div>
             </div>
             <!--유저정보끝-->
-              <p style="margin-top:40px;"><%= p.post_content %></p>
+              <p style="margin-totp:40px;"><%= p.content %></p>
             </div>
           </div>
         </div>

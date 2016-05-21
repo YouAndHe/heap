@@ -3,12 +3,15 @@ Rails.application.routes.draw do
   get 'home/index'
   root 'home#index'
   get 'home/writepage'
-  get 'testtemp' => 'home#taehaTestTemp'
+  get 'home/revengepage'
+  
+  
   post 'home/write'
+  post 'home/revenge'
+  
   get 'home/vslist'
   get 'home/vsstart/:match_id' => 'home#vsstart'
   get 'home/vsreceive/:match_id' => 'home#vsstart'
-  
   get 'home/ztesting'
   
   # The priority is based upon order of creation: first created -> highest priority.

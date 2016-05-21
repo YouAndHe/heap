@@ -1,7 +1,16 @@
-<% @one_match.posts.each do |p| %>
-    <% if p.user == current_user %>
-        <p>나 : <%= p.content %></p>
-    <% else %>
-        <p>놈 : <%= p.content %></p>
+<div class="container">
+    <%= @one_match.posts.first %>
+    <% @one_match.posts.each do |p| %>
+        <div class="row">
+            <% if p.user == current_user %>
+                <div class="col-md-6">
+                    나 : <%= p.content %>
+                </div>
+            <% else %>
+                <div class="col-md-6 col-md-offset-6">
+                    놈 : <%= p.content %>
+                </div>
+            <% end %>
+        </div> <!--row -->
     <% end %>
-<% end %>
+</div>
